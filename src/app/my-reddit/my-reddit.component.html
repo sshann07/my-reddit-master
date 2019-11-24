@@ -1,0 +1,50 @@
+<table>
+  <tr>
+    <td>
+      <h3>
+        Posts from {{ subreddit }}
+      </h3>
+    </td>
+    <td style="padding-left: 50px;">
+      <div>
+        <div>
+          Sub Reddit:
+          <select (change)="onSubRedditChanged($event.target.value)">
+            <option *ngFor="let repo of subredditArray" value="{{repo}}">{{repo}}</option>>
+          </select>
+        </div>
+        <div style="height: calc(100% - 30px);"></div>
+      </div>
+    </td>
+  </tr>
+</table>
+<div> 
+  <kendo-grid [data]="gridView" [height]="410" [pageSize]="pageSize" [skip]="skip" [pageable]="{
+  buttonCount: buttonCount,
+  info: info,
+  type: type,
+  pageSizes: pageSizes,
+  previousNext: previousNext
+  }" (pageChange)="pageChange($event)">
+    <kendo-grid-column field="title" title="Title" width="250">
+    </kendo-grid-column>
+    <kendo-grid-column field="permalink" title="URL(permalink)" width="250">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <a style="color: blue" [routerLink]="" (click)="fetchcomment(dataItem.permalink)">{{dataItem.permalink}}</a>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="score" title="Score" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="thumbnail" title="Thumbnail" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="created" title="Created" width="80">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            {{ dataItem.created * 1000 | date:'yyyy-MM-dd' }}
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="author" title="Author" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="num_comments" title="Comments Count" width="80">
+    </kendo-grid-column>
+  </kendo-grid>
+</div>

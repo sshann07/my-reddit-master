@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <td>
+      <h2>
+        Post Comment
+      </h2>
+    </td>
+    <td style="padding-left: 850px;">
+      <div>
+        <div>
+          <a style="color: blue" [routerLink]="['home']">Go To Home Page</a>
+        </div>
+        <div style="height: calc(100% - 30px);"></div>
+      </div>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr style="outline: thin solid" *ngFor="let item of comment">
+    {{item.body}}
+  </tr>
+</table>
