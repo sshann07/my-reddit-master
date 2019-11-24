@@ -36,6 +36,9 @@
     <kendo-grid-column field="score" title="Score" width="80">
     </kendo-grid-column>
     <kendo-grid-column field="thumbnail" title="Thumbnail" width="80">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <img [src]="dataItem.thumbnail">
+          </ng-template>
     </kendo-grid-column>
     <kendo-grid-column field="created" title="Created" width="80">
         <ng-template kendoGridCellTemplate let-dataItem>
